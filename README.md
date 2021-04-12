@@ -23,5 +23,5 @@ Pull the **features** branch for all repos:
 ```
 - uses: nforgeio-actions/neon-checkout
   with:
-    branch: featurss
+    branch: features
 ```
