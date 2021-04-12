@@ -16,26 +16,33 @@ inputs:
     description: Optionally specifies the branch or tag (defaults to "master")
     required: false
     default: master
-  folder:
-    description: Optionally specifies the parent folder for the repos (defaults to "$NF_REPOS")
-    required: false
-    default: ${{ NF_REPOS }}
 runs:
   using: composite
   steps:
     - shell: pwsh
       run: |
-        # There should never be any uncommitted GitHub repo changes on a test runner so 
-        # we're going to reset the local repos before checking them out.
-
-        Set-Location $env:NL_ROOT
-        git reset --hard
-        git checkout ${{ branch }}
-
-        Set-Location $env:NF_ROOT
-        git reset --hard
-        git checkout ${{ branch }}
-
-        Set-Location $env:NC_ROOT
-        git reset --hard
-        git checkout ${{ branch }}
+      
+        # Checks out the named repo, resetting it first to clear
+        # any uncomitted changes.
+        function Checkout
+        {
+            [CmdletBinding()]
+            param (
+                [Parameter(Position=0, Mandatory=1)]
+                [string]$repoName
+            )
+            
+            Push-Location "${{ NF_REPOS }}\$repoName"
+            git reset --hard
+            git checkout ${{ branch }}
+            Pop-Location
+        }
+        
+        # Checkout the repos
+        
+        Checkout neonCLOUD
+        Checkout neonKUBE
+        Checkout neonLIBRARY
+        Checkout nforgeio.github.io
+        Checkout cadence-samples
+        Checkout temporal-samples
