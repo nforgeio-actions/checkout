@@ -20,30 +20,31 @@ inputs:
 runs:
   using: composite
   steps:
-    - shell: pwsh
-      run: |
+  - uses: nforgeio-actions/neon-environment@master
+  - shell: pwsh
+    run: |
       
-        # Checks out the named repo, resetting it first to clear
-        # any uncommitted changes.
-        function Checkout
-        {
-            [CmdletBinding()]
-            param (
-                [Parameter(Position=0, Mandatory=1)]
-                [string]$repoName
-            )
+      # Checks out the named repo, resetting it first to clear
+      # any uncommitted changes.
+      function Checkout
+      {
+          [CmdletBinding()]
+          param (
+              [Parameter(Position=0, Mandatory=1)]
+              [string]$repoName
+          )
             
-            Push-Location "${{ env.NF_REPOS }}\$repoName"
-            git reset --hard
-            git checkout ${{ env.branch }}
-            Pop-Location
-        }
+          Push-Location "${{ env.NF_REPOS }}\$repoName"
+          git reset --hard
+          git checkout ${{ env.branch }}
+          Pop-Location
+      }
         
-        # Checkout the repos
+      # Checkout the repos
         
-        Checkout neonCLOUD
-        Checkout neonKUBE
-        Checkout neonLIBRARY
-        Checkout nforgeio.github.io
-        Checkout cadence-samples
-        Checkout temporal-samples
+      Checkout neonCLOUD
+      Checkout neonKUBE
+      Checkout neonLIBRARY
+      Checkout nforgeio.github.io
+      Checkout cadence-samples
+      Checkout temporal-samples
