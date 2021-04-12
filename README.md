@@ -14,7 +14,7 @@ Note that any uncommitted changes to the repos will be reset first and that the 
 
 This action solves a chicken-and-the-egg issue we have where most of the actions we use are embedded in the target repos so we'll need a way to first pull the repos to the JOBRUNNER to obtain the current versions.  We could have used a public action like **actions/checkout** for this but our execution environment is a bit non-standard.
 
-## Example
+## Examples
 
 Pull the (default) **master** branches for all repos:
 ```
