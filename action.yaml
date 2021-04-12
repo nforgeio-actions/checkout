@@ -23,7 +23,7 @@ runs:
       run: |
       
         # Checks out the named repo, resetting it first to clear
-        # any uncomitted changes.
+        # any uncommitted changes.
         function Checkout
         {
             [CmdletBinding()]
@@ -34,7 +34,7 @@ runs:
             
             Push-Location "${{ env.NF_REPOS }}\$repoName"
             git reset --hard
-            git checkout ${{ branch }}
+            git checkout ${{ env.branch }}
             Pop-Location
         }
         
