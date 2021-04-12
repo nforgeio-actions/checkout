@@ -3,12 +3,12 @@ GitHub Action that checks out nforgeio related repos on JOBRUNNER servers and th
 
 This action currently pulls these repositories:
 
-* **nforgeio/cadence-samples**
-* **nforgeio/neonLIBRARY**
-* **nforgeio/neonCLOUD**
-* **nforgeio/neonKUBE**
-* **nforgeio/nforgeio.github.io**
-* **nforgeio/temporal-samples**
+* forgeio/cadence-samples
+* nforgeio/neonLIBRARY
+* nforgeio/neonCLOUD
+* nforgeio/neonKUBE
+* nforgeio/nforgeio.github.io
+* nforgeio/temporal-samples
 
 Note that any uncommitted changes to the repos will be reset first.
 
@@ -19,7 +19,7 @@ Pull the **master** branches for all repos:
 - uses: nforgeio-actions/neon-checkout
 ```
 
-Pull the **features* branch for all repos:
+Pull the **features** branch for all repos:
 ```
 - uses: nforgeio-actions/neon-checkout
   with:
