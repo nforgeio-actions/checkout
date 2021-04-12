@@ -32,7 +32,7 @@ runs:
                 [string]$repoName
             )
             
-            Push-Location "${{ NF_REPOS }}\$repoName"
+            Push-Location "${{ env.NF_REPOS }}\$repoName"
             git reset --hard
             git checkout ${{ branch }}
             Pop-Location
