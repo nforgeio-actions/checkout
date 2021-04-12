@@ -11,7 +11,7 @@
 #   temporal-samples    - public Temporal sample apps
 
 name: neon-pull-repos
-description: Checks out the neonCLOUD, neonKUBE, and neonLIBRARY repos
+description: Checks out the neonCLOUD, neonKUBE, and neonLIBRARY repos.
 inputs:
   branch:
     description: Optionally specifies the branch or tag (defaults to "master")
