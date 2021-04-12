@@ -1,0 +1,41 @@
+# Pulls the neonFORGE GitHub repos to a JOBRUNNER.
+#
+# This currently manages the following neonFORGE repos:
+#
+#   neonCLOUD           - private/enterprise code including deployment scripts
+#   neonKUBE            - public neonKUBE related code
+#   neonLIBRARY         - public neonLIBRARY related code
+#   nforgeio.github.io  - public neonLIBRARY code documentation (doc.neonforge.com)
+#   cadence-samples     - public Cadence sample apps
+#   temporal-samples    - public Temporal sample apps
+
+name: neon-pull-repos
+description: Checks out the neonCLOUD, neonKUBE, and neonLIBRARY repos
+inputs:
+  branch:
+    description: Optionally specifies the branch or tag (defaults to "master")
+    required: false
+    default: master
+  folder:
+    description: Optionally specifies the parent folder for the repos (defaults to "$NF_REPOS")
+    required: false
+    default: ${{ NF_REPOS }}
+runs:
+  using: composite
+  steps:
+    - shell: pwsh
+      run: |
+        # There should never be any uncommitted GitHub repo changes on a test runner so 
+        # we're going to reset the local repos before checking them out.
+
+        Set-Location $env:NL_ROOT
+        git reset --hard
+        git checkout ${{ branch }}
+
+        Set-Location $env:NF_ROOT
+        git reset --hard
+        git checkout ${{ branch }}
+
+        Set-Location $env:NC_ROOT
+        git reset --hard
+        git checkout ${{ branch }}
