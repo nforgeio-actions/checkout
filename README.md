@@ -1,4 +1,7 @@
 # neon-checkout
+
+**INTERNAL USE ONLY:** This GitHub action is not intended for general use.  The only reason why this repo is public is because GitHub requires it.
+
 GitHub Action that checks out nforgeio related repos on JOBRUNNER servers and then pulls any changes.
 
 This action currently pulls these repositories:
