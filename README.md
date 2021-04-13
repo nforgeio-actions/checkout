@@ -19,19 +19,19 @@ This action solves a chicken-and-the-egg issue we have where most of the actions
 
 ## Examples
 
-Pull the (default) **master** branches for all repos:
+**Pull the (default) master branches for all repos:**
 ```
 - uses: nforgeio-actions/neon-checkout
 ```
 
-Pull the **features** branch for all repos:
+**Pull the features branch for all repos:**
 ```
 - uses: nforgeio-actions/neon-checkout
   with:
     branch: features
 ```
 
-Pull the **features** branch for all repos to a custom directory:
+**Pull the features branch for all repos to a custom directory:**
 ```
 - uses: nforgeio-actions/neon-checkout
   with:
