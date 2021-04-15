@@ -17,6 +17,15 @@ Note that any uncommitted changes to the repos will be reset first and that the 
 
 This action solves a chicken-and-the-egg issue we have where most of the actions we use are embedded in the target repos so we'll need a way to first pull the repos to the JOBRUNNER to obtain the current versions.  We could have used a public action like **actions/checkout** for this but our execution environment is a bit non-standard.
 
+## Local Repository Actions
+
+This action also makes copies of the following repo GitHub action files into the GitHub runner's workspace so they can be referenced by workflows.  The GitHub action **uses** syntax assumes that all repos are checked out within the runner workspace does not allow action references to anywhere outside of thw working directory (such as our local repos).
+
+**neonCLOUD:** Actions will be copied to **github.workspace/actions/neonCLOUD** and a file like **my-action.yaml** can be referenced like:
+```
+./actions/neonCLOUD/my-action.yaml
+```
+
 ## Examples
 
 **Pull the (default) master branches for all repos:**
