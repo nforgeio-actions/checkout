@@ -57,8 +57,11 @@ runs:
           # Create the action directory and copy the action files
           # from the repo.
           
-          [System.IO.Directory]::CreateDirectory($actionFolder)
-          Copy-Item -Path "$repoActionsFolder/*" -Destination $repoActionsFolder -PassThru
+          if ([System.IO.Directory]::Exists($actionFolder))
+          {
+              [System.IO.Directory]::CreateDirectory($actionFolder)
+              Copy-Item -Path "$repoActionsFolder/*" -Destination $repoActionsFolder -PassThru
+          }
       }
         
       # Checkout the repos
