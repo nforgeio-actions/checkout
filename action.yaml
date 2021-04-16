@@ -10,7 +10,7 @@
 #   cadence-samples     - public Cadence sample apps
 #   temporal-samples    - public Temporal sample apps
 
-name: neon-pull-repos
+name: neon-checkout
 description: Checks out the neonCLOUD, neonKUBE, and neonLIBRARY repos.
 inputs:
   branch:
