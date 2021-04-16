@@ -39,6 +39,9 @@ runs:
           )
           
           $repoPath = "$env:NF_REPOS\$repoName"
+          
+          Write-Output ""
+          Write-Output "Checkout: $repoPath"
             
           Push-Location $repoPath
           
