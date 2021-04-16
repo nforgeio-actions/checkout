@@ -1,7 +1,5 @@
 #------------------------------------------------------------------------------
-# Checks out the neonFORGE GitHub repos to a JOBRUNNER within the [C:\src] directory
-# and then also checks out any repos with GitHub workflows or actions via [actions/checkout]
-# so we can reference local repo actions.
+# Checks out the neonFORGE GitHub repos to a JOBRUNNER within the [C:\src] directory.
 #
 # This currently manages the following neonFORGE repos:
 #
