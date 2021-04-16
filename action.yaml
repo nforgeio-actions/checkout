@@ -24,12 +24,8 @@ inputs:
 runs:
   using: composite
   steps:
-  - uses: actions/checkout@v2
-    with: 
-      repository: nforgeio/neonCLOUD
-      branch: ${{ inputs.branch }}
-      token: ${{ env.GITHUB_TOKEN }}
-  - shell: pwsh
+  - name: checkout-all
+    shell: pwsh
     run: |
       
       # Checks out the named repo, resetting it first to clear
