@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
-# Pulls the neonFORGE GitHub repos to a JOBRUNNER and copies any GitHub action
-# files to [github.workspace]/actions/REPO.
-# 
+# Checks out the neonFORGE GitHub repos to a JOBRUNNER within the [C:\src] directory
+# and then also checks out any repos with GitHub workflows or actions via [actions/checkout]
+# so we can reference local repo actions.
 #
 # This currently manages the following neonFORGE repos:
 #
@@ -11,6 +11,8 @@
 #   nforgeio.github.io  - public neonLIBRARY code documentation (doc.neonforge.com)
 #   cadence-samples     - public Cadence sample apps
 #   temporal-samples    - public Temporal sample apps
+#
+# NOTE: Only the neonCLOUD repos includes GitHub actions.
 
 name: neon-pull-repos
 description: Checks out the neonCLOUD, neonKUBE, and neonLIBRARY repos.
@@ -22,6 +24,11 @@ inputs:
 runs:
   using: composite
   steps:
+  - uses: actions/checkout@v2
+    with: 
+      repository: nforgeio/neonCLOUD
+      branch: ${{ inputs.branch }}
+      token: ${{ env.GITHUB_TOKEN }}
   - shell: pwsh
     run: |
       
@@ -35,33 +42,12 @@ runs:
               [string]$repoName
           )
           
-          $repoPath          = "$env:NF_REPOS\$repoName"
-          $repoActionsFolder = [System.IO.Path]::Combine($repoPath, ".github", "actions")
+          $repoPath = "$env:NF_REPOS\$repoName"
             
           Push-Location repoPath
           git reset --hard
           git checkout "$env:branch"
           Pop-Location
-          
-          # Remove the action directory for the repo and then
-          # copy any action files from the checked out repo
-          # into a new directory (when the repo has actions).
-          
-          $actionFolder = [System.IO.Path]::Combine("$repoPath", "actions", $repoName)
-          
-          if ([System.IO.Directory]::RemoveDirectory($actionFolder, $true))
-          {
-              Remove-Item -Path $actionFolder -Recures -Force
-          }
-          
-          # Create the action directory and copy the action files
-          # from the repo.
-          
-          if ([System.IO.Directory]::Exists($actionFolder))
-          {
-              [System.IO.Directory]::CreateDirectory($actionFolder)
-              Copy-Item -Path "$repoActionsFolder/*" -Destination $repoActionsFolder -PassThru
-          }
       }
         
       # Checkout the repos
