@@ -47,3 +47,7 @@ This action also makes copies of the following repo GitHub action files into the
     branch: features
     folder: C:\Temp\test-folder
 ```
+
+## Implementation Note
+
+This action assumes that it's being run on a specially configured self-hosted (Windows) jobrunner with the relevant neonFORGE repos already cloned to specific directories.  Generic jobrunners are not supported.
