@@ -40,9 +40,11 @@ runs:
           
           $repoPath = "$env:NF_REPOS\$repoName"
             
-          Push-Location repoPath
+          Push-Location $repoPath
+          
           git reset --hard
           git checkout "$env:branch"
+          
           Pop-Location
       }
         
