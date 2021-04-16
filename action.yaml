@@ -9,8 +9,6 @@
 #   nforgeio.github.io  - public neonLIBRARY code documentation (doc.neonforge.com)
 #   cadence-samples     - public Cadence sample apps
 #   temporal-samples    - public Temporal sample apps
-#
-# NOTE: Only the neonCLOUD repos includes GitHub actions.
 
 name: neon-pull-repos
 description: Checks out the neonCLOUD, neonKUBE, and neonLIBRARY repos.
