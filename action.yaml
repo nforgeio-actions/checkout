@@ -65,7 +65,7 @@ runs:
           
           git reset --quiet --hard
           git checkout --quiet "$env:branch"
-          git pull -quiet
+          git pull --quiet
           
           Pop-Location
       }
