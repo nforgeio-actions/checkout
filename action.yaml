@@ -63,9 +63,9 @@ runs:
             
           Push-Location $repoPath
           
-          git reset --hard
-          git checkout "$env:branch"
-          git pull
+          git reset --quiet --hard
+          git checkout --quiet "$env:branch"
+          git pull -quiet
           
           Pop-Location
       }
