@@ -10,7 +10,7 @@
 #   cadence-samples     - public Cadence sample apps
 #   temporal-samples    - public Temporal sample apps
 
-name: neon-checkout
+name: checkout
 description: Checks out the neonFORGE repos.
 inputs:
   branch:
