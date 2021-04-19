@@ -1,4 +1,4 @@
-# neon-checkout
+# checkout
 
 **INTERNAL USE ONLY:** This GitHub action is not intended for general use.  The only reason why this repo is public is because GitHub requires it.
 
@@ -19,12 +19,12 @@ Note that any uncommitted changes to the repos will be reset first and that the 
 
 **Pull the (default) master branches for all repos:**
 ```
-- uses: nforgeio-actions/neon-checkout
+- uses: nforgeio-actions/checkout
 ```
 
 **Pull the "features" branch for all repos:**
 ```
-- uses: nforgeio-actions/neon-checkout
+- uses: nforgeio-actions/checkout
   with:
     branch: features
 ```
