@@ -10,7 +10,7 @@
 #------------------------------------------------------------------------------
 # Checks out the neonFORGE GitHub repos to a JOBRUNNER within the [C:\src] directory.
 #
-# This currently manages the following neonFORGE repos:
+# This currently checks-out the following neonFORGE repos be default:
 #
 #   neonCLOUD           - private/enterprise code including deployment scripts
 #   neonKUBE            - public neonKUBE related code
@@ -18,14 +18,40 @@
 #   nforgeio.github.io  - public neonLIBRARY code documentation (doc.neonforge.com)
 #   cadence-samples     - public Cadence sample apps
 #   temporal-samples    - public Temporal sample apps
+#
+# NOTE: You can disable checkout for specific repos via inputs.
 
 name: checkout
 description: Checks out the neonFORGE repos.
 inputs:
   branch:
-    description: Optionally specifies the branch or tag (defaults to "master")
+    description: "Optionally specifies the branch or tag (defaults to 'master')"
     required: false
     default: master
+  disable-neoncloud:
+    description: "Optionally disable neonCLOUD repo checkout"
+    required: false
+    default: "false"
+  disable-neonkube:
+    description: "Optionally disable neonKUBE repo checkout"
+    required: false
+    default: "false"
+  disable-library:
+    description: "Optionally disable neonLIBRARY repo checkout"
+    required: false
+    default: "false"
+  disable-nforgeio-github-io:
+    description: "Optionally disable nforgeio.github.io repo checkout"
+    required: false
+    default: "false"
+  disable-cadence-samples:
+    description: "Optionally disable cadence-samples repo checkout"
+    required: false
+    default: "false"
+  disable-temporal-samples:
+    description: "Optionally disable temporal-samples repo checkout"
+    required: false
+    default: "false"
 runs:
   using: node12
   main: action.js
