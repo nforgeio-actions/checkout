@@ -34,5 +34,5 @@ Note that any uncommitted changes to the repos will be reset first and that the 
 - uses: nforgeio-actions/checkout
   with:
     branch: features
-    disable-cadence-samples: true
+    skip-cadence-samples: true
 ```
