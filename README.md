@@ -17,18 +17,25 @@ Note that any uncommitted changes to the repos will be reset first and that the 
 
 ## Examples
 
-**Pull the (default) master branches for all repos:**
+**Checkout the (default) master branches for all repos:**
 ```
 - uses: nforgeio-actions/checkout
 ```
 
-**Pull the "features" branch for all repos:**
+**Checkout the "features" branch for all repos:**
 ```
 - uses: nforgeio-actions/checkout
   with:
     branch: features
 ```
 
+**Checkout all of the repos except for cadence-samples**
+```
+- uses: nforgeio-actions/checkout
+  with:
+    branch: features
+    disable-cadence-samples: true
+```
 
 ## Implementation Note
 
