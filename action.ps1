@@ -56,12 +56,12 @@ function Checkout
 
 # Read the inputs.
 
-$skip_neonCLOUD          = $(Get-ActionInput "skip-neoncloud") == "true"
-$skip_neonKUBE           = $(Get-ActionInput "skip-neonkube") == "true"
-$skip_neonLIBRARY        = $(Get-ActionInput "skip-neonlibrary") == "true"
-$skip_nforgeio_github_io = $(Get-ActionInput "skip-nforgeio-github-io") == "true"
-$skip_cadence_samples    = $(Get-ActionInput "skip-cadence-samples") == "true"
-$skip_temporal_samples   = $(Get-ActionInput "skip-temporal-samples") == "true"
+$skip_neonCLOUD          = $(Get-ActionInput "skip-neoncloud") -eq "true"
+$skip_neonKUBE           = $(Get-ActionInput "skip-neonkube") -eq "true"
+$skip_neonLIBRARY        = $(Get-ActionInput "skip-neonlibrary") -eq "true"
+$skip_nforgeio_github_io = $(Get-ActionInput "skip-nforgeio-github-io") -eq "true"
+$skip_cadence_samples    = $(Get-ActionInput "skip-cadence-samples") -eq "true"
+$skip_temporal_samples   = $(Get-ActionInput "skip-temporal-samples") -eq "true"
         
 # Checkout the repos
 
