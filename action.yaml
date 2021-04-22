@@ -19,7 +19,7 @@
 #   cadence-samples     - public Cadence sample apps
 #   temporal-samples    - public Temporal sample apps
 #
-# NOTE: You can disable checkout for specific repos via inputs.
+# NOTE: You can skip checkout for specific repos via inputs.
 
 name: checkout
 description: Checks out the neonFORGE repos.
@@ -28,27 +28,27 @@ inputs:
     description: "Optionally specifies the branch or tag (defaults to 'master')"
     required: false
     default: master
-  disable-neoncloud:
+  skip-neoncloud:
     description: "Optionally disable neonCLOUD repo checkout"
     required: false
     default: "false"
-  disable-neonkube:
+  skip-neonkube:
     description: "Optionally disable neonKUBE repo checkout"
     required: false
     default: "false"
-  disable-library:
+  diskipsable-neonlibrary:
     description: "Optionally disable neonLIBRARY repo checkout"
     required: false
     default: "false"
-  disable-nforgeio-github-io:
+  skip-nforgeio-github-io:
     description: "Optionally disable nforgeio.github.io repo checkout"
     required: false
     default: "false"
-  disable-cadence-samples:
+  skip-cadence-samples:
     description: "Optionally disable cadence-samples repo checkout"
     required: false
     default: "false"
-  disable-temporal-samples:
+  skip-temporal-samples:
     description: "Optionally disable temporal-samples repo checkout"
     required: false
     default: "false"
