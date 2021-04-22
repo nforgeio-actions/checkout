@@ -53,13 +53,45 @@ function Checkout
           
     Pop-Location
 }
+
+# Read the inputs.
+
+$skip_neonCLOUD          = $(Get-ActionInput "skip-neoncloud") == "true"
+$skip_neonKUBE           = $(Get-ActionInput "skip-neonkube") == "true"
+$skip_neonLIBRARY        = $(Get-ActionInput "skip-neonlibrary") == "true"
+$skip_nforgeio_github_io = $(Get-ActionInput "skip-nforgeio-github-io") == "true"
+$skip_cadence_samples    = $(Get-ActionInput "skip-cadence-samples") == "true"
+$skip_temporal_samples   = $(Get-ActionInput "skip-temporal-samples") == "true"
         
 # Checkout the repos
-        
-Checkout neonCLOUD
-Checkout neonKUBE
-Checkout neonLIBRARY
-Checkout nforgeio.github.io
-Checkout cadence-samples
-Checkout temporal-samples
+
+if (!$skip_neonCLOUD)
+{
+    Checkout "neonCLOUD"
+}
+
+if (!$skip_neonKUBE)
+{
+    Checkout "neonKUBE"
+}
+
+if (!$skip_neonLIBRARY)
+{
+    Checkout "neonLIBRARY"
+}
+
+if (!$skip_nforgeio_github_io)
+{
+    Checkout "nforgeio.github.io"
+}
+      
+if (!$skip_cadence_samples)
+{
+    Checkout "cadence-samples"
+}
+
+if (!$skip_temporal_samples)
+{
+    Checkout "temporal-samples"
+}
 
