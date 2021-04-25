@@ -46,9 +46,14 @@ function Checkout
             
     Push-Location $repoPath
           
-    git reset --quiet --hard
-    git checkout --quiet "$branch"
-    git pull --quiet
+        git reset --quiet --hard
+        ThrowOnExitCode
+
+        git checkout --quiet "$branch"
+        ThrowOnExitCode
+
+        git pull --quiet
+        ThrowOnExitCode
           
     Pop-Location
 }
@@ -70,9 +75,14 @@ function Reset
             
     Push-Location $repoPath
           
-    git reset --quiet --hard
-    git checkout --quiet master
-    git pull --quiet
+        git reset --quiet --hard
+        ThrowOnExitCode
+    
+        git checkout --quiet master
+        ThrowOnExitCode
+    
+        git pull --quiet
+        ThrowOnExitCode
           
     Pop-Location
 }
