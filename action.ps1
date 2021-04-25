@@ -79,7 +79,7 @@ function Reset
 
 # Read the inputs.
 
-$branch                  = Get-ActionInput "build-branch" $true
+$branch                  = Get-ActionInput "branch" $true
 $skip_neonCLOUD          = $(Get-ActionInput "skip-neoncloud") -eq "true"
 $skip_neonKUBE           = $(Get-ActionInput "skip-neonkube") -eq "true"
 $skip_neonLIBRARY        = $(Get-ActionInput "skip-neonlibrary") -eq "true"
