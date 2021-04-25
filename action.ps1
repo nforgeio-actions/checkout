@@ -29,15 +29,17 @@ Push-Location $ncPowershell
 . ./includes.ps1
 Pop-Location
       
-# Checks out the named repo, resetting it first to clear
+# Checks out the named repo and branch, resetting it first to clear
 # any uncommitted changes.
 
 function Checkout
 {
     [CmdletBinding()]
     param (
-        [Parameter(Position=0, Mandatory=1)]
+        [Parameter(Position=0, Mandatory=$true)]
         [string]$repoName
+        [Parameter(Position=0, Mandatory=$false)]
+        [string]$repoBranch = "master"
     )
           
     $repoPath = "$env:NF_REPOS\$repoName"
@@ -49,7 +51,7 @@ function Checkout
         git reset --quiet --hard
         ThrowOnExitCode
 
-        git checkout --quiet "$branch"
+        git checkout --quiet "$repoBranch"
         ThrowOnExitCode
 
         git pull --quiet
@@ -65,7 +67,7 @@ function Reset
 {
     [CmdletBinding()]
     param (
-        [Parameter(Position=0, Mandatory=1)]
+        [Parameter(Position=0, Mandatory=$true)]
         [string]$repoName
     )
           
@@ -115,7 +117,7 @@ if ($reset)
 
 if (!$skip_neonCLOUD)
 {
-    Checkout "neonCLOUD"
+    Checkout "neonCLOUD" "$branch"
 }
 
 if (!$skip_neonKUBE)
@@ -125,8 +127,11 @@ if (!$skip_neonKUBE)
 
 if (!$skip_neonLIBRARY)
 {
-    Checkout "neonLIBRARY"
+    Checkout "neonLIBRARY" "$branch"
 }
+
+# These repos don't have branches other than master so we
+# won't pass the branch input value.
 
 if (!$skip_nforgeio_github_io)
 {
