@@ -42,13 +42,36 @@ function Checkout
           
     $repoPath = "$env:NF_REPOS\$repoName"
           
-    Write-Output ""
     Write-Output "Checkout: $repoPath"
             
     Push-Location $repoPath
           
     git reset --quiet --hard
     git checkout --quiet "$env:branch"
+    git pull --quiet
+          
+    Pop-Location
+}
+      
+# Resets the named repo by clearing any pending changes and then
+# checking out and pulling the master branch.
+
+function Reset
+{
+    [CmdletBinding()]
+    param (
+        [Parameter(Position=0, Mandatory=1)]
+        [string]$repoName
+    )
+          
+    $repoPath = "$env:NF_REPOS\$repoName"
+          
+    Write-Output "Reset: $repoPath"
+            
+    Push-Location $repoPath
+          
+    git reset --quiet --hard
+    git checkout --quiet master
     git pull --quiet
           
     Pop-Location
@@ -62,6 +85,20 @@ $skip_neonLIBRARY        = $(Get-ActionInput "skip-neonlibrary") -eq "true"
 $skip_nforgeio_github_io = $(Get-ActionInput "skip-nforgeio-github-io") -eq "true"
 $skip_cadence_samples    = $(Get-ActionInput "skip-cadence-samples") -eq "true"
 $skip_temporal_samples   = $(Get-ActionInput "skip-temporal-samples") -eq "true"
+$reset                   = $(Get-ActionInput "reset") -eq "true"
+
+# Special case reset mode
+
+if ($reset)
+{
+    Reset "neonCLOUD"
+    Reset "neonKUBE"
+    Reset "neonLIBRARY"
+    Reset "nforgeio.github.io"
+    Reset "cadence-samples"
+    Reset "temporal-samples"
+    return;
+}
         
 # Checkout the repos
 

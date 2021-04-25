@@ -20,6 +20,9 @@
 #   temporal-samples    - public Temporal sample apps
 #
 # NOTE: You can skip checkout for specific repos via inputs.
+#
+# This action also supports the ability to reset all repos by resetting pending
+# changes, and then checking out and pulling the master branch.
 
 name: checkout
 description: Checks out the neonFORGE repos.
@@ -50,6 +53,10 @@ inputs:
     default: "false"
   skip-temporal-samples:
     description: "Optionally disable temporal-samples repo checkout"
+    required: false
+    default: "false"
+  reset:
+    description: "Optionally resets any changes, checks out and pull the 'master' branch.  All other inputs are ignored."
     required: false
     default: "false"
 runs:
