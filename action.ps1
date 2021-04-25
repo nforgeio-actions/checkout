@@ -37,7 +37,7 @@ function Checkout
     [CmdletBinding()]
     param (
         [Parameter(Position=0, Mandatory=$true)]
-        [string]$repoName
+        [string]$repoName,
         [Parameter(Position=0, Mandatory=$false)]
         [string]$repoBranch = "master"
     )
