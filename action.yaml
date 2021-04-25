@@ -36,7 +36,7 @@ inputs:
     description: "Optionally disable neonKUBE repo checkout"
     required: false
     default: "false"
-  diskipsable-neonlibrary:
+  skip-neonlibrary:
     description: "Optionally disable neonLIBRARY repo checkout"
     required: false
     default: "false"
