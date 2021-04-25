@@ -38,7 +38,7 @@ function Checkout
     param (
         [Parameter(Position=0, Mandatory=$true)]
         [string]$repoName,
-        [Parameter(Position=0, Mandatory=$false)]
+        [Parameter(Position=1, Mandatory=$false)]
         [string]$repoBranch = "master"
     )
           
