@@ -51,6 +51,9 @@ function Checkout
         git reset --quiet --hard
         ThrowOnExitCode
 
+        git fetch --quiet
+        ThrowOnExitCode
+
         git checkout --quiet "$repoBranch"
         ThrowOnExitCode
 
@@ -80,6 +83,9 @@ function Reset
         git reset --quiet --hard
         ThrowOnExitCode
     
+        git fetch --quiet
+        ThrowOnExitCode
+
         git checkout --quiet master
         ThrowOnExitCode
     
