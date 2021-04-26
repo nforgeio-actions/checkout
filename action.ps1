@@ -44,7 +44,7 @@ function Checkout
           
     $repoPath = "$env:NF_REPOS\$repoName"
           
-    Write-Output "Checkout: $repoPath"
+    Write-Output "check-out: $repoPath"
             
     Push-Location $repoPath
           
@@ -76,7 +76,7 @@ function Reset
           
     $repoPath = "$env:NF_REPOS\$repoName"
           
-    Write-Output "Reset: $repoPath"
+    Write-Output "reset: $repoPath"
             
     Push-Location $repoPath
           
@@ -106,51 +106,59 @@ $skip_cadence_samples    = $(Get-ActionInput "skip-cadence-samples") -eq "true"
 $skip_temporal_samples   = $(Get-ActionInput "skip-temporal-samples") -eq "true"
 $reset                   = $(Get-ActionInput "reset") -eq "true"
 
-# Special case reset mode
+# Perform the operation
 
-if ($reset)
+try
 {
-    Reset "neonCLOUD"
-    Reset "neonKUBE"
-    Reset "neonLIBRARY"
-    Reset "nforgeio.github.io"
-    Reset "cadence-samples"
-    Reset "temporal-samples"
-    return;
-}
+    # Special case reset mode
+
+    if ($reset)
+    {
+        Reset "neonCLOUD"
+        Reset "neonKUBE"
+        Reset "neonLIBRARY"
+        Reset "nforgeio.github.io"
+        Reset "cadence-samples"
+        Reset "temporal-samples"
+        return;
+    }
         
-# Checkout the repos
+    # Checkout the repos
 
-if (!$skip_neonCLOUD)
-{
-    Checkout "neonCLOUD" "$branch"
-}
+    if (!$skip_neonCLOUD)
+    {
+        Checkout "neonCLOUD" "$branch"
+    }
 
-if (!$skip_neonKUBE)
-{
-    Checkout "neonKUBE"
-}
+    if (!$skip_neonKUBE)
+    {
+        Checkout "neonKUBE"
+    }
 
-if (!$skip_neonLIBRARY)
-{
-    Checkout "neonLIBRARY" "$branch"
-}
+    if (!$skip_neonLIBRARY)
+    {
+        Checkout "neonLIBRARY" "$branch"
+    }
 
-# These repos don't have branches other than master so we
-# won't pass the branch input value.
+    # These repos don't have branches other than master so we
+    # won't pass the branch input value.
 
-if (!$skip_nforgeio_github_io)
-{
-    Checkout "nforgeio.github.io"
-}
+    if (!$skip_nforgeio_github_io)
+    {
+        Checkout "nforgeio.github.io"
+    }
       
-if (!$skip_cadence_samples)
-{
-    Checkout "cadence-samples"
-}
+    if (!$skip_cadence_samples)
+    {
+        Checkout "cadence-samples"
+    }
 
-if (!$skip_temporal_samples)
-{
-    Checkout "temporal-samples"
+    if (!$skip_temporal_samples)
+    {
+        Checkout "temporal-samples"
+    }
 }
-
+catch
+{
+    Write-ActionException $_
+}
