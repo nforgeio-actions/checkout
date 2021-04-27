@@ -51,10 +51,10 @@ function Checkout
         git reset --quiet --hard
         ThrowOnExitCode
 
-        git fetch --quiet
+        git checkout --quiet "$repoBranch"
         ThrowOnExitCode
 
-        git checkout --quiet "$repoBranch"
+        git fetch --quiet
         ThrowOnExitCode
 
         git pull --quiet
