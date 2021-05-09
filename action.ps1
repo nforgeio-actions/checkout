@@ -99,13 +99,13 @@ function Reset
 # Read the inputs.
 
 $branch                  = Get-ActionInput "branch" $true
-$skip_neonCLOUD          = $(Get-ActionInput "skip-neoncloud") -eq "true"
-$skip_neonKUBE           = $(Get-ActionInput "skip-neonkube") -eq "true"
-$skip_neonLIBRARY        = $(Get-ActionInput "skip-neonlibrary") -eq "true"
-$skip_nforgeio_github_io = $(Get-ActionInput "skip-nforgeio-github-io") -eq "true"
-$skip_cadence_samples    = $(Get-ActionInput "skip-cadence-samples") -eq "true"
-$skip_temporal_samples   = $(Get-ActionInput "skip-temporal-samples") -eq "true"
-$reset                   = $(Get-ActionInput "reset") -eq "true"
+$skip_neonCLOUD          = Get-ActionInputBool "skip-neoncloud"
+$skip_neonKUBE           = Get-ActionInputBool "skip-neonkube"
+$skip_neonLIBRARY        = Get-ActionInputBool "skip-neonlibrary"
+$skip_nforgeio_github_io = Get-ActionInputBool "skip-nforgeio-github-io"
+$skip_cadence_samples    = Get-ActionInputBool "skip-cadence-samples"
+$skip_temporal_samples   = Get-ActionInputBool "skip-temporal-samples"
+$reset                   = Get-ActionInputBool "reset"
 
 # Perform the operation
 
