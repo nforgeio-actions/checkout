@@ -26,9 +26,9 @@ if ([System.String]::IsNullOrEmpty($ncRoot) -or ![System.IO.Directory]::Exists($
       
 $ncPowershell = [System.IO.Path]::Combine($ncRoot, "Powershell")
       
-Push-Cwd $ncPowershell
+Push-Location $ncPowershell
 . ./includes.ps1
-Pop-Cwd
+Pop-Location
       
 # Checks out the named repo and branch, resetting it first to clear
 # any uncommitted changes.
