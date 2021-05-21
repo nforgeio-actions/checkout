@@ -26,9 +26,9 @@ if ([System.String]::IsNullOrEmpty($ncRoot) -or ![System.IO.Directory]::Exists($
       
 $ncPowershell = [System.IO.Path]::Combine($ncRoot, "Powershell")
       
-Push-Location $ncPowershell
+Push-Location $ncPowershell | Out-Null
 . ./includes.ps1
-Pop-Location
+Pop-Location | Out-Null
       
 # Checks out the named repo and branch, resetting it first to clear
 # any uncommitted changes.
@@ -47,7 +47,7 @@ function Checkout
           
     Write-Output "check-out: $repoPath"
             
-    Push-Cwd $repoPath
+    Push-Cwd $repoPath | Out-Null
           
         git reset --quiet --hard
         ThrowOnExitCode
@@ -61,7 +61,7 @@ function Checkout
         git pull --quiet
         ThrowOnExitCode
           
-    Pop-Cwd
+    Pop-Cwd | Out-Null
 }
       
 # Resets the named repo by clearing any pending changes and then
@@ -79,7 +79,7 @@ function Reset
           
     Write-Output "reset: $repoPath"
             
-    Push-Cwd $repoPath
+    Push-Cwd $repoPath | Out-Null
           
         git reset --quiet --hard
         ThrowOnExitCode
@@ -93,7 +93,7 @@ function Reset
         git pull --quiet
         ThrowOnExitCode
           
-    Pop-Cwd
+    Pop-Cwd | Out-Null
 }
 
 # Read the inputs.
