@@ -49,17 +49,10 @@ function Checkout
             
     Push-Cwd $repoPath | Out-Null
           
-        git reset --quiet --hard
-        ThrowOnExitCode
-
-        git checkout --quiet "$repoBranch"
-        ThrowOnExitCode
-
-        git fetch --quiet
-        ThrowOnExitCode
-
-        git pull --quiet
-        ThrowOnExitCode
+        Invoke-CaptureStreams "git reset --quiet --hard"
+        Invoke-CaptureStreams "git checkout --quiet `"$repoBranch`""
+        Invoke-CaptureStreams "git fetch --quiet"
+        Invoke-CaptureStreams "git pull --quiet"
           
     Pop-Cwd | Out-Null
 }
@@ -81,17 +74,10 @@ function Reset
             
     Push-Cwd $repoPath | Out-Null
           
-        git reset --quiet --hard
-        ThrowOnExitCode
-    
-        git fetch --quiet
-        ThrowOnExitCode
-
-        git checkout --quiet master
-        ThrowOnExitCode
-    
-        git pull --quiet
-        ThrowOnExitCode
+        Invoke-CaptureStreams "git reset --quiet --hard"
+        Invoke-CaptureStreams "git fetch --quiet"
+        Invoke-CaptureStreams "git checkout --quiet master"
+        Invoke-CaptureStreams "git pull --quiet"
           
     Pop-Cwd | Out-Null
 }
