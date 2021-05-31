@@ -49,10 +49,10 @@ function Checkout
             
     Push-Cwd $repoPath | Out-Null
           
-        Invoke-CaptureStreams "git reset --quiet --hard"
-        Invoke-CaptureStreams "git checkout --quiet `"$repoBranch`""
-        Invoke-CaptureStreams "git fetch --quiet"
-        Invoke-CaptureStreams "git pull --quiet"
+        Invoke-CaptureStreams "git reset --quiet --hard" | Out-Null
+        Invoke-CaptureStreams "git checkout --quiet `"$repoBranch`"" | Out-Null
+        Invoke-CaptureStreams "git fetch --quiet" | Out-Null
+        Invoke-CaptureStreams "git pull --quiet" | Out-Null
           
     Pop-Cwd | Out-Null
 }
@@ -74,10 +74,10 @@ function Reset
             
     Push-Cwd $repoPath | Out-Null
           
-        Invoke-CaptureStreams "git reset --quiet --hard"
-        Invoke-CaptureStreams "git fetch --quiet"
-        Invoke-CaptureStreams "git checkout --quiet master"
-        Invoke-CaptureStreams "git pull --quiet"
+        Invoke-CaptureStreams "git reset --quiet --hard" | Out-Null
+        Invoke-CaptureStreams "git fetch --quiet" | Out-Null
+        Invoke-CaptureStreams "git checkout --quiet master" | Out-Null
+        Invoke-CaptureStreams "git pull --quiet" | Out-Null
           
     Pop-Cwd | Out-Null
 }
