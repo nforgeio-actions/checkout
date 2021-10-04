@@ -30,6 +30,7 @@ Push-Location $ncPowershell | Out-Null
 . ./includes.ps1
 Pop-Location | Out-Null
       
+#------------------------------------------------------------------------------
 # Checks out the named repo and branch, resetting it first to clear
 # any uncommitted changes.
 
@@ -57,10 +58,11 @@ function Checkout
     Pop-Cwd | Out-Null
 }
       
+#------------------------------------------------------------------------------
 # Resets the named repo by clearing any pending changes and then
 # checking out and pulling the master branch.
 
-function Reset
+function ResetToMaster
 {
     [CmdletBinding()]
     param (
@@ -82,6 +84,9 @@ function Reset
     Pop-Cwd | Out-Null
 }
 
+#------------------------------------------------------------------------------
+# Implementation
+
 # Read the inputs.
 
 $branch                  = Get-ActionInput "branch" $true
@@ -101,12 +106,12 @@ try
 
     if ($reset)
     {
-        Reset "neonCLOUD"
-        Reset "neonKUBE"
-        Reset "neonLIBRARY"
-        Reset "nforgeio.github.io"
-        Reset "cadence-samples"
-        Reset "temporal-samples"
+        ResetToMaster "neonCLOUD"
+        ResetToMaster "neonKUBE"
+        ResetToMaster "neonLIBRARY"
+        ResetToMaster "nforgeio.github.io"
+        ResetToMaster "cadence-samples"
+        ResetToMaster "temporal-samples"
         return;
     }
         
